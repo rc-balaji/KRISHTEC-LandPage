@@ -1,0 +1,64 @@
+.fade-right-to-left-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.fade-right-to-left-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fade-right-to-left-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-right-to-left-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* New animation for the text content */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-animation-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.text-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.text-animation-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-animation-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Button hover effect */
+.btn-hover:hover {
+  background-color: #4a90e2;
+  color: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  transition: transform 300ms, background-color 300ms, box-shadow 300ms;
+}

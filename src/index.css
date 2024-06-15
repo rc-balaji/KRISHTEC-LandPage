@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* styles.css */
+/* .shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-text-bold {
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+} */
