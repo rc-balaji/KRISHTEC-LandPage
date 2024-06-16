@@ -1,0 +1,10 @@
+
+
+.nav-link {
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-link-active {
+  color: #01b0cd;
+  border-bottom: 4px solid #01b0cd;
+}

@@ -4,35 +4,52 @@ import { Link as ScrollLink } from "react-scroll";
 import DropdownMenu from "./DropdownMenu";
 import logoImage from "./1kt.png";
 import isoImage from "./iso.png";
-import { NavigationContext } from "../NavigationContext"; // Import NavigationContext
-import Services from "../pages/Services/Services";
+import { NavigationContext } from "../../NavigationContext";
+import './animations.css'; // Import custom CSS animations
 
 function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
   const [scrollFade, setScrollFade] = useState(false);
-  const { currentPage, setCurrentPage } = useContext(NavigationContext); // Use NavigationContext
+  const { currentPage, setCurrentPage } = useContext(NavigationContext);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollFade(window.scrollY > 50);
+      const sections = ["home", "about", "contact"];
+      let currentSection = "";
+
+      sections.forEach((section) => {
+        const sectionElement = document.getElementById(section);
+        if (sectionElement) {
+          const rect = sectionElement.getBoundingClientRect();
+          if (rect.top <= 70 && rect.bottom >= 70) {
+            currentSection = section;
+          }
+        }
+      });
+
+      if (currentSection) {
+        setCurrentPage(currentSection);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [setCurrentPage]);
 
   useEffect(() => {
     setNavOpen(false);
-    // Update currentPage based on location.pathname
     if (location.pathname === "/") {
       setCurrentPage("home");
     } else if (location.pathname.startsWith("/products")) {
       setCurrentPage("products");
     } else if (location.pathname.startsWith("/services")) {
       setCurrentPage("services");
+    } else if (location.pathname.startsWith("/mou")) {
+      setCurrentPage("mou");
     } else {
       setCurrentPage("");
     }
@@ -43,6 +60,7 @@ function Navbar() {
   const isProductOrServicePage = () => {
     return (
       location.pathname.startsWith("/products") ||
+      location.pathname.startsWith("/mou") ||
       location.pathname.startsWith("/services")
     );
   };
@@ -56,20 +74,16 @@ function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-2xl font-bold cursor-pointer">
           <Link to="/">
-            <img src={logoImage} alt="MyLogo" className="h-20" />
+            <img src={logoImage} alt="MyLogo" className="h-16" />
           </Link>
         </div>
         <div className="hidden md:flex space-x-6 items-center text-lg">
           {isProductOrServicePage() ? (
             <Link
               to="/"
-              className={`text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                currentPage === 'home' ? '' : 'shadow-text'
-              } cursor-pointer ${
-                isActive("/")
-                  ? "text-[#01b0cd] border-b-4 border-[#01b0cd]"
-                  : "hover:text-[#01b0cd]"
-              }`}
+              className={`text-2xl nav-link ${
+                currentPage === "home" ? "nav-link-active" : ""
+              } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
               Home
@@ -79,13 +93,9 @@ function Navbar() {
               to="home"
               smooth={true}
               duration={300}
-              className={`text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                currentPage === 'home' ? '' : 'shadow-text'
-              } cursor-pointer ${
-                currentPage === "home"
-                  ? "text-[#01b0cd] border-b-4 border-[#01b0cd]"
-                  : "hover:text-[#01b0cd]"
-              }`}
+              className={`text-2xl nav-link ${
+                currentPage === "home" ? "nav-link-active" : ""
+              } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
               Home
@@ -97,13 +107,9 @@ function Navbar() {
                 to="about"
                 smooth={true}
                 duration={300}
-                className={`text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    currentPage === 'about' ? '' : 'shadow-text'
-                  } cursor-pointer ${
-                  currentPage === "about"
-                    ? "text-[#01b0cd] border-b-4 border-[#01b0cd]"
-                    : "hover:text-[#01b0cd]"
-                }`}
+                className={`text-2xl nav-link ${
+                  currentPage === "about" ? "nav-link-active" : ""
+                } cursor-pointer`}
                 onClick={() => setCurrentPage("about")}
               >
                 About
@@ -112,19 +118,24 @@ function Navbar() {
                 to="contact"
                 smooth={true}
                 duration={300}
-                className={`text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                    currentPage === 'contact' ? '' : 'shadow-text'
-                  } cursor-pointer ${
-                  currentPage === "contact"
-                    ? "text-[#01b0cd] border-b-4 border-[#01b0cd]"
-                    : "hover:text-[#01b0cd]"
-                }`}
+                className={`text-2xl nav-link ${
+                  currentPage === "contact" ? "nav-link-active" : ""
+                } cursor-pointer`}
                 onClick={() => setCurrentPage("contact")}
               >
                 Contact
               </ScrollLink>
             </>
           )}
+          <Link
+            to="/mou"
+            className={`text-2xl nav-link ${
+              currentPage === "mou" ? "nav-link-active" : ""
+            } cursor-pointer`}
+            onClick={() => setCurrentPage("mou")}
+          >
+            MOU
+          </Link>
           <DropdownMenu
             title="Products"
             items={[
@@ -135,7 +146,7 @@ function Navbar() {
               { label: "LED Screen", link: "/products/led-screen" },
             ]}
             onClose={() => setNavOpen(false)}
-            currentPage={currentPage} // Pass currentPage to DropdownMenu
+            currentPage={currentPage}
           />
           <DropdownMenu
             title="Services"
@@ -144,7 +155,7 @@ function Navbar() {
               { label: "Training", link: "/services/training" },
             ]}
             onClose={() => setNavOpen(false)}
-            currentPage={currentPage} // Pass currentPage to DropdownMenu
+            currentPage={currentPage}
           />
         </div>
         <div className="flex items-center">
@@ -173,7 +184,7 @@ function Navbar() {
             <img
               src={isoImage}
               alt="Profile"
-              className={`w-32 h-18 rounded-full ml-4 ${
+              className={`w-30 h-16 rounded-full ml-4 ${
                 scrollFade ? "opacity-75" : "opacity-100"
               } transition-opacity duration-500`}
             />
@@ -190,7 +201,7 @@ function Navbar() {
         </div>
       </div>
       {navOpen && (
-        <div className="md:hidden bg-white shadow-lg rounded-lg mt-2">
+        <div className="md:hidden bg-white shadow-lg rounded-lg mt-2 w-full">
           {isProductOrServicePage() ? (
             <Link
               to="/"
@@ -260,9 +271,21 @@ function Navbar() {
             onClick={() => {
               setCurrentPage("products");
               setNavOpen(false);
-            }} // Update currentPage here
+            }}
           >
             Products
+          </Link>
+          <Link
+            to="/mou"
+            className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              isActive("/mou") ? "bg-blue-500 text-white" : ""
+            }`}
+            onClick={() => {
+              setCurrentPage("mou");
+              setNavOpen(false);
+            }}
+          >
+            MOU
           </Link>
           <Link
             to="/services"
@@ -272,7 +295,7 @@ function Navbar() {
             onClick={() => {
               setCurrentPage("services");
               setNavOpen(false);
-            }} // Update currentPage here
+            }}
           >
             Services
           </Link>

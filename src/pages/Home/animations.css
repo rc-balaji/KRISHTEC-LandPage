@@ -1,3 +1,9 @@
+/* Parent container overflow */
+.home-section {
+  overflow: hidden;
+}
+
+/* Transition animations */
 .fade-right-to-left-enter {
   opacity: 0;
   transform: translateX(100%);
@@ -20,18 +26,29 @@
   transition: opacity 500ms, transform 500ms;
 }
 
-/* New animation for the text content */
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fade-left-to-right-enter {
+  opacity: 0;
+  transform: translateX(-100%);
 }
 
+.fade-left-to-right-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.fade-left-to-right-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-left-to-right-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* Text animations */
 .text-animation-enter {
   opacity: 0;
   transform: translateY(20px);

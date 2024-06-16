@@ -5,6 +5,7 @@ import img3 from "./assets/3img.jpg"
 import img4 from "./assets/4img.jpg"
 import img5 from "./assets/5img.jpg"
 import img6 from "./assets/6img.jpg"
+import img7 from "./assets/7img.jpg"
 
 function Services() {
   return (
@@ -45,7 +46,7 @@ function Services() {
           <div
             className="bg-white p-6 rounded-lg shadow-lg relative"
             data-aos="fade-up"
-            data-aos-delay="100"
+            data-aos-delay="200"
             onMouseEnter={(e) => {
               e.currentTarget.classList.add('shadow-2xl');
             }}
@@ -75,7 +76,7 @@ function Services() {
           <div
             className="bg-white p-6 rounded-lg shadow-lg relative"
             data-aos="fade-up"
-            data-aos-delay="200"
+            data-aos-delay="400"
             onMouseEnter={(e) => {
               e.currentTarget.classList.add('shadow-2xl');
             }}
@@ -105,7 +106,7 @@ function Services() {
           <div
             className="bg-white p-6 rounded-lg shadow-lg relative"
             data-aos="fade-up"
-            data-aos-delay="300"
+            data-aos-delay="600"
             onMouseEnter={(e) => {
               e.currentTarget.classList.add('shadow-2xl');
             }}
@@ -135,7 +136,7 @@ function Services() {
           <div
             className="bg-white p-6 rounded-lg shadow-lg relative"
             data-aos="fade-up"
-            data-aos-delay="400"
+            data-aos-delay="800"
             onMouseEnter={(e) => {
               e.currentTarget.classList.add('shadow-2xl');
             }}
@@ -165,7 +166,7 @@ function Services() {
           <div
             className="bg-white p-6 rounded-lg shadow-lg relative"
             data-aos="fade-up"
-            data-aos-delay="500"
+            data-aos-delay="1000"
             onMouseEnter={(e) => {
               e.currentTarget.classList.add('shadow-2xl');
             }}
@@ -194,7 +195,7 @@ function Services() {
           <div
             className="bg-white p-6 rounded-lg shadow-lg relative"
             data-aos="fade-up"
-            data-aos-delay="500"
+            data-aos-delay="1200"
             onMouseEnter={(e) => {
               e.currentTarget.classList.add('shadow-2xl');
             }}
@@ -205,8 +206,8 @@ function Services() {
             <div className="group">
               <div className="flex justify-center mb-4">
                 <img
-                  src={img6} // Replace with your image source
-                  alt="Service 6"
+                  src={img7} // Replace with your image source
+                  alt="Service 7"
                   className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>

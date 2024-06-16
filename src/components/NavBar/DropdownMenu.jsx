@@ -1,6 +1,6 @@
 import React, { useState, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { NavigationContext } from '../NavigationContext'; // Import NavigationContext
+import { NavigationContext } from '../../NavigationContext'; // Import NavigationContext
 
 function DropdownMenu({ title, items, onClose, currentPage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);

@@ -21,7 +21,6 @@ const contentArray = [
   },
 ];
 
-// eslint-disable-next-line react/display-name
 const TransitionComponent = forwardRef(({ imageUrl, children, ...props }, ref) => (
   <CSSTransition nodeRef={ref} {...props}>
     <div ref={ref} className="w-full h-full bg-center bg-cover" style={{ backgroundImage: `url(${imageUrl})` }}>
@@ -84,8 +83,8 @@ function Home() {
   const { imageUrl, heading, description, buttonText, buttonLink } = contentArray[currentIndex];
 
   return (
-    <section id="home" className="h-screen mt-20 flex flex-col md:flex-row items-center justify-center bg-cover bg-center relative" style={{ backgroundImage: `url(${imageUrl})` }} data-aos="fade-up">
-      <div className="absolute top-1/2 left-4 transform -translate-y-1/2">
+    <section id="home" className="h-screen mt-20 flex flex-col md:flex-row items-center justify-center bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: `url(${imageUrl})` }} data-aos="fade-up">
+      <div className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10">
         <button onClick={handlePrevClick} className="bg-white text-gray-800 text-l rounded-full p-2 shadow-md focus:outline-none">
           ⬅️
         </button>
@@ -150,7 +149,7 @@ function Home() {
           )}
         </TransitionGroup>
       </div>
-      <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+      <div className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10">
         <button onClick={handleNextClick} className="bg-white text-gray-800 rounded-full p-2 shadow-md focus:outline-none">
           ➡️
         </button>

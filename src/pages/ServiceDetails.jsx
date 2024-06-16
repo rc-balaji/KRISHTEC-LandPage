@@ -8,10 +8,9 @@ AOS.init();
 function ServiceDetails() {
   const { serviceId } = useParams();
   return (
-    <div className="p-10 text-center" data-aos="fade-up">
-      <h2 className="text-3xl mb-4">Service: {serviceId}</h2>
-      <p>Details about the service {serviceId}.</p>
-    </div>
+    <section id="contact" className="h-screen flex items-center justify-center bg-cover bg-center" data-aos="fade-up">
+      <h2 className="text-3xl mb-4">Service Det</h2>
+    </section>
   );
 }
 
