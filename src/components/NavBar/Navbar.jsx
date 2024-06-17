@@ -5,7 +5,7 @@ import DropdownMenu from "./DropdownMenu";
 import logoImage from "./1kt.png";
 import isoImage from "./iso.png";
 import { NavigationContext } from "../../NavigationContext";
-import './animations.css'; // Import custom CSS animations
+import "./animations.css"; // Import custom CSS animations
 
 function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
@@ -138,6 +138,7 @@ function Navbar() {
           </Link>
           <DropdownMenu
             title="Products"
+            isRes={navOpen}
             items={[
               { label: "IOT", link: "/products/iot" },
               { label: "EMP Kits", link: "/products/emp-kits" },
@@ -150,6 +151,7 @@ function Navbar() {
           />
           <DropdownMenu
             title="Services"
+            isRes={navOpen}
             items={[
               { label: "Internship", link: "/services/internship" },
               { label: "Training", link: "/services/training" },
@@ -264,18 +266,6 @@ function Navbar() {
             </>
           )}
           <Link
-            to="/products"
-            className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
-              isActive("/products") ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => {
-              setCurrentPage("products");
-              setNavOpen(false);
-            }}
-          >
-            Products
-          </Link>
-          <Link
             to="/mou"
             className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
               isActive("/mou") ? "bg-blue-500 text-white" : ""
@@ -287,18 +277,41 @@ function Navbar() {
           >
             MOU
           </Link>
-          <Link
-            to="/services"
-            className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
-              isActive("/services") ? "bg-blue-500 text-white" : ""
+          <div
+            className={`block py-2 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              currentPage === "products" ? "bg-blue-500" : ""
             }`}
-            onClick={() => {
-              setCurrentPage("services");
-              setNavOpen(false);
-            }}
           >
-            Services
-          </Link>
+            <DropdownMenu
+              title="Products"
+              isRes={navOpen}
+              items={[
+                { label: "IOT", link: "/products/iot" },
+                { label: "EMP Kits", link: "/products/emp-kits" },
+                { label: "ADAS", link: "/products/adas" },
+                { label: "Display", link: "/products/display" },
+                { label: "LED Screen", link: "/products/led-screen" },
+              ]}
+              onClose={() => setNavOpen(false)}
+              currentPage={currentPage}
+            />
+          </div>
+          <div
+            className={`block py-2 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              currentPage === "services" ? "bg-blue-500" : ""
+            }`}
+          >
+          <DropdownMenu
+            title="Services"
+            items={[
+              { label: "Internship", link: "/services/internship" },
+              { label: "Training", link: "/services/training" },
+            ]}
+            isRes={navOpen}
+            onClose={() => setNavOpen(false)}
+            currentPage={currentPage}
+          />
+          </div>
         </div>
       )}
     </nav>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import video from "./cube.mp4";
-import Services from './Services/Services';
+import Services from '../Services/Services';
 
 function About() {
   useEffect(() => {

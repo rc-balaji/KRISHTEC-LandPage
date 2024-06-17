@@ -1,0 +1,20 @@
+@media (min-width: 768px) {
+    .md:grid-cols-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+  
+    .md:max-h-full {
+      max-height: 600px; /* Example: Set a maximum height for the right section */
+      overflow-y: auto; /* Enable vertical scrolling when content exceeds the height */
+    }
+  
+    .md:max-h-full img {
+      max-height: 100%; /* Ensure the image on the left does not exceed the height of the right section */
+      height: auto;
+      width: auto;
+      max-width: 100%;
+    }
+  }
+  
