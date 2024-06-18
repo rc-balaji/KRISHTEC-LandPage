@@ -1,0 +1,24 @@
+/* Adjusting Swiper container and slide styles */
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 400px; /* Increase height to make room for reflection */
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+}
+
+/* Reflection effect */
+.reflection {
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2));
+    box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2));
+}

@@ -53,61 +53,6 @@ const MOU = () => {
       url: "https://kce.ac.in/profile/",
       image: KEC 
     },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
-    {
-      name: "Karpagam College of Engineering, Coimbatore.",
-      url: "https://kce.ac.in/profile/",
-      image: KEC 
-    },
   ];
 
   return (
@@ -120,23 +65,22 @@ const MOU = () => {
             <img src={img} alt="Partnership Image" className="mx-auto rounded-lg shadow-lg md:max-h-full" />
           </div>
 
-          <div className="overflow-y-auto" style={{ maxHeight: '800px' }}>
+          <div className="overflow-y-auto h-[800px]">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {partnershipData.map((partner, index) => (
                 <a key={index} href={partner.url} target="_blank" rel="noopener noreferrer" className="block">
-                  <div data-aos="fade-left" data-aos-delay={index * 100}>
+               
                     <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 flex items-center space-x-4 cursor-pointer transition duration-300 hover:bg-gray-200">
                       <img src={partner.image} alt={partner.name} className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full shadow-lg" />
                       <div>
                         <h5 className="md:text-l font-bold text-gray-800">{partner.name}</h5>
                       </div>
-                    </div>
+                   
                   </div>
                 </a>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
