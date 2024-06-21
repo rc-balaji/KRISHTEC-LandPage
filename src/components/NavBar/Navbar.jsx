@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import DropdownMenu from "./DropdownMenu";
-import logoImage from "./1kt.png";
+import logoImage from "./ic3.png";
 import isoImage from "./iso.png";
 import { NavigationContext } from "../../NavigationContext";
 import "./animations.css"; // Import custom CSS animations
@@ -67,16 +67,17 @@ function Navbar() {
 
   return (
     <nav
-      className={`bg-white p-5 fixed w-full top-0 z-50 ${
-        scrollFade ? "bg-opacity-70" : "bg-opacity-100"
-      } transition-opacity duration-500`}
+      className={`fixed w-full top-0 z-50 transition-opacity duration-500 ${
+        scrollFade ? "bg-white bg-opacity-100" : "bg-transparent"
+      }`}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold cursor-pointer">
-          <Link to="/">
-            <img src={logoImage} alt="MyLogo" className="h-16" />
-          </Link>
-        </div>
+      <div className="container mx-auto flex justify-between items-center p-5">
+      <div className="text-2xl font-bold cursor-pointer relative">
+  <Link to="/" className="relative block">
+    <img style={{width:'100px',height:'80px'}} src={logoImage} alt="MyLogo" className="h-16 shadow-green" />
+  </Link>
+</div>
+
         <div className="hidden md:flex space-x-6 items-center text-lg">
           {isProductOrServicePage() ? (
             <Link
@@ -101,6 +102,7 @@ function Navbar() {
               Home
             </ScrollLink>
           )}
+          
           {!isProductOrServicePage() && (
             <>
               <ScrollLink
@@ -114,28 +116,9 @@ function Navbar() {
               >
                 About
               </ScrollLink>
-              <ScrollLink
-                to="contact"
-                smooth={true}
-                duration={300}
-                className={`text-2xl nav-link ${
-                  currentPage === "contact" ? "nav-link-active" : ""
-                } cursor-pointer`}
-                onClick={() => setCurrentPage("contact")}
-              >
-                Contact
-              </ScrollLink>
             </>
           )}
-          <Link
-            to="/mou"
-            className={`text-2xl nav-link ${
-              currentPage === "mou" ? "nav-link-active" : ""
-            } cursor-pointer`}
-            onClick={() => setCurrentPage("mou")}
-          >
-            MOU
-          </Link>
+          
           <DropdownMenu
             title="Products"
             isRes={navOpen}
@@ -159,6 +142,30 @@ function Navbar() {
             onClose={() => setNavOpen(false)}
             currentPage={currentPage}
           />
+          <Link
+            to="/mou"
+            className={`text-2xl nav-link ${
+              currentPage === "mou" ? "nav-link-active" : ""
+            } cursor-pointer`}
+            onClick={() => setCurrentPage("mou")}
+          >
+            MOU
+          </Link>
+          {!isProductOrServicePage() && (
+            <>
+              <ScrollLink
+                to="contact"
+                smooth={true}
+                duration={300}
+                className={`text-2xl nav-link ${
+                  currentPage === "contact" ? "nav-link-active" : ""
+                } cursor-pointer`}
+                onClick={() => setCurrentPage("contact")}
+              >
+                Contact
+              </ScrollLink>
+            </>
+          )}
         </div>
         <div className="flex items-center">
           <div className="md:hidden">
@@ -186,9 +193,7 @@ function Navbar() {
             <img
               src={isoImage}
               alt="Profile"
-              className={`w-30 h-16 rounded-full ml-4 ${
-                scrollFade ? "opacity-75" : "opacity-100"
-              } transition-opacity duration-500`}
+              className={`w-30 h-16 rounded-full ml-4 transition-opacity duration-500`}
             />
             <div className="flex flex-col ml-2">
               <div
@@ -249,6 +254,48 @@ function Navbar() {
               >
                 About
               </ScrollLink>
+            </>
+          )}
+          
+          
+          <DropdownMenu
+            title="Products"
+            isRes={navOpen}
+            items={[
+              { label: "IOT", link: "/products/iot" },
+              { label: "EMP Kits", link: "/products/emp-kits" },
+              { label: "ADAS", link: "/products/adas" },
+              { label: "Display", link: "/products/display" },
+              { label: "LED Screen", link: "/products/led-screen" },
+            ]}
+            onClose={() => setNavOpen(false)}
+            currentPage={currentPage}
+          />
+          <DropdownMenu
+            title="Services"
+            isRes={navOpen}
+            items={[
+              { label: "Internship", link: "/services/internship" },
+              { label: "Training", link: "/services/training" },
+            ]}
+            onClose={() => setNavOpen(false)}
+            currentPage={currentPage}
+          />
+          <Link
+            to="/mou"
+            className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              isActive("/mou") ? "bg-blue-500 text-white" : ""
+            }`}
+            onClick={() => {
+              setCurrentPage("mou");
+              setNavOpen(false);
+            }}
+          >
+            MOU
+          </Link>
+          
+      {!isProductOrServicePage() && (
+            <>
               <ScrollLink
                 to="contact"
                 smooth={true}
@@ -265,55 +312,9 @@ function Navbar() {
               </ScrollLink>
             </>
           )}
-          <Link
-            to="/mou"
-            className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
-              isActive("/mou") ? "bg-blue-500 text-white" : ""
-            }`}
-            onClick={() => {
-              setCurrentPage("mou");
-              setNavOpen(false);
-            }}
-          >
-            MOU
-          </Link>
-          <div
-            className={`block py-2 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
-              currentPage === "products" ? "bg-blue-500" : ""
-            }`}
-          >
-            <DropdownMenu
-              title="Products"
-              isRes={navOpen}
-              items={[
-                { label: "IOT", link: "/products/iot" },
-                { label: "EMP Kits", link: "/products/emp-kits" },
-                { label: "ADAS", link: "/products/adas" },
-                { label: "Display", link: "/products/display" },
-                { label: "LED Screen", link: "/products/led-screen" },
-              ]}
-              onClose={() => setNavOpen(false)}
-              currentPage={currentPage}
-            />
-          </div>
-          <div
-            className={`block py-2 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
-              currentPage === "services" ? "bg-blue-500" : ""
-            }`}
-          >
-          <DropdownMenu
-            title="Services"
-            items={[
-              { label: "Internship", link: "/services/internship" },
-              { label: "Training", link: "/services/training" },
-            ]}
-            isRes={navOpen}
-            onClose={() => setNavOpen(false)}
-            currentPage={currentPage}
-          />
-          </div>
         </div>
       )}
+
     </nav>
   );
 }

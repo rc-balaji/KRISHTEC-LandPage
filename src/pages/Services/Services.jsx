@@ -1,225 +1,128 @@
-import React from 'react';
-import img1 from "./assets/1img.jpg"
-import img2 from "./assets/2img.jpg"
-import img3 from "./assets/3img.jpg"
-import img4 from "./assets/4img.jpg"
-import img5 from "./assets/5img.jpg"
-import img6 from "./assets/6img.jpg"
-import img7 from "./assets/7img.jpg"
+import React from "react";
+import img1 from "./assets/1img.jpg";
+import img2 from "./assets/2img.jpg";
+import img3 from "./assets/3img.jpg";
+import img4 from "./assets/4img.jpg";
+import img5 from "./assets/5img.jpg";
+import img6 from "./assets/6img.jpg";
+import img7 from "./assets/7img.jpg";
+import Atropos from "atropos/react";
+import "./style.css";
 
 function Services() {
+  var elements = document.getElementsByClassName("my-atropos");
+
+  // Loop through each element
+  for (var i = 0; i < elements.length; i++) {
+    // Find child elements with class 'atropos-shadow' within each 'my-atropos' element
+    var children = elements[i].getElementsByClassName("atropos-shadow");
+
+    // Loop through child elements
+    for (var j = 0; j < children.length; j++) {
+      // Set the background color to rgba(98, 0, 234, 0.952)
+      children[j].style.backgroundColor = "rgba(196, 26, 154, 0.952)";
+    }
+  }
+
+  const services = [
+    {
+      image: img1,
+      title: "Robotics",
+      desc: "LeGo robotics, M2M robo.",
+      shadowColor: "rgba(98, 0, 234, 0.5)",
+    },
+    {
+      image: img2,
+      title: "Elaboration Of The Core",
+      desc: "We are here for upgrading your skills.",
+      shadowColor: "rgba(234, 98, 0, 0.5)",
+    },
+    {
+      image: img3,
+      title: "Industry Offered OCC",
+      desc: "OCC for Academic Institutes.",
+      shadowColor: "rgba(0, 234, 98, 0.5)",
+    },
+    {
+      image: img4,
+      title: "IoT",
+      desc: "Solution provider using Azure IoT, V4.0, Online Monitoring, ML, LoRa.",
+      shadowColor: "rgba(0, 98, 234, 0.5)",
+    },
+    {
+      image: img5,
+      title: "Modern Technology",
+      desc: "DAS, RAS, Iv4.0, IoT, M2M, LoRa, LoRaWAN.",
+      shadowColor: "rgba(234, 0, 98, 0.5)",
+    },
+    {
+      image: img6,
+      title: "Testing For Perfection",
+      desc: "Circuit Testing",
+      shadowColor: "rgba(234, 234, 0, 0.5)",
+    },
+    {
+      image: img7,
+      title: "Led Screen Displays",
+      desc: "Wonderful Indoor And Outdoor Screens...",
+      shadowColor: "rgba(0, 234, 234, 0.5)",
+    },
+  ];
+
   return (
-    <section id="services" className="mt-0 min-h-screen flex items-center justify-center bg-cover bg-center bg-gray-100 py-8">
+    <section
+      id="services"
+      className="mt-0 min-h-screen flex items-center justify-center bg-cover bg-center bg-gray-100 py-8"
+    >
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8" data-aos="fade-up">Our Services</h2>
+        <h2
+          className="text-4xl md:text-5xl font-bold text-gray-800 mb-8"
+          data-aos="fade-up"
+        >
+          Our Services
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Service 1 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img1} // Replace with your image source
-                  alt="Robotics"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+          {services.map((service, index) => {
+            return <div key={index} >
+                <Atropos
+              key={service.id} // Assuming service.id or another unique identifier is available
+              className="my-atropos"
+              activeOffset={40}
+              shadow={true}
+              shadowScale={1.05}
+              highlight={true}
+              onEnter={() => console.log("Enter")}
+              onLeave={() => console.log("Leave")}
+              onRotate={(x, y) => console.log("Rotate", x, y)}
+            >
+              <div
+                className="bg-white p-6 rounded-lg shadow-lg relative"
+                data-aos="fade-up"
+                data-aos-delay={index * 200}
+                style={{ "--shadow-color": service.shadowColor }} // Correct inline style syntax
+              >
+                <div className="group">
+                  <div className="flex justify-center mb-4">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="absolute inset-0 z-10 text-2xl flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
+                    {service.desc}
+                  </p>
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-lg"></div>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold mb-4">Robotics</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              LeGo robotics, M2M robo.
-              </p>
-              {/* Colorful glowing effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-lg"></div>
-              </div>
-          </div>
-
-          {/* Service 2 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            data-aos-delay="200"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img2} // Replace with your image source
-                  alt="Service 2"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Elaboration Of The Core</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              We are here for upgrading your skills.
-              </p>
-              {/* Colorful glowing effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+            </Atropos>
             </div>
-          </div>
-
-          {/* Service 3 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            data-aos-delay="400"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img3} // Replace with your image source
-                  alt="Service 3"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Industry Offered OCC</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              OCC for Academic Institutes.
-              </p>
-              {/* Colorful glowing effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            </div>
-          </div>
-
-          {/* Service 4 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            data-aos-delay="600"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img4} // Replace with your image source
-                  alt="Service 4"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">IoT</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              Solution provider using Azure IoT, V4.0, Online Monitoring, ML , LoRa.
-              </p>
-              {/* Colorful glowing effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            </div>
-          </div>
-
-          {/* Service 5 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            data-aos-delay="800"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img5} // Replace with your image source
-                  alt="Service 5"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Modern Technology</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              DAS, RAS, Iv4.0,IoT, M2M,LoRa,LoRaWAN.
-              </p>
-              {/* Colorful glowing effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            </div>
-          </div>
-
-          {/* Service 6 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            data-aos-delay="1000"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img6} // Replace with your image source
-                  alt="Service 6"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Testing For Perfection</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              Circuit Testing
-              </p>
-              {/* Colorful glowing effect*/}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            </div>
-          </div>
-          {/* Service 7 */}
-          <div
-            className="bg-white p-6 rounded-lg shadow-lg relative"
-            data-aos="fade-up"
-            data-aos-delay="1200"
-            onMouseEnter={(e) => {
-              e.currentTarget.classList.add('shadow-2xl');
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.classList.remove('shadow-2xl');
-            }}
-          >
-            <div className="group">
-              <div className="flex justify-center mb-4">
-                <img
-                  src={img7} // Replace with your image source
-                  alt="Service 7"
-                  className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold mb-4">Led Screen Displays</h3>
-              {/* Description on hover */}
-              <p className="absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-              Wonderfull Indoor And Outdoor Screens...
-              </p>
-              {/* Colorful glowing effect*/}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-            </div>
-          </div>
+            
+            
+          })}
         </div>
       </div>
     </section>
@@ -227,4 +130,3 @@ function Services() {
 }
 
 export default Services;
-

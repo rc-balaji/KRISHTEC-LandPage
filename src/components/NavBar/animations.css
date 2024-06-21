@@ -40,3 +40,8 @@
     color: #fff;
   }
 }
+
+/* In your Tailwind CSS configuration or style file */
+.shadow-green {
+  filter: drop-shadow(0 0 4px rgba(0, 255, 128, 0.8)); /* Adjust the color and blur radius as needed */
+}
