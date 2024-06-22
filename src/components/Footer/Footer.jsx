@@ -4,8 +4,8 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 py-8 px-8 font-[sans-serif] tracking-wide mt-16">
       <div className="relative">
-        <div className="bg-blue-600 gap-3 rounded-md flex items-center sm:px-12 max-sm:px-4 py-4 absolute top-[-66px] w-full">
-          <h6 className="text-white sm:text-xl max-sm:text-sm font-semibold">
+        <div className="bg-[#a3eef7] gap-3 rounded-md flex items-center sm:px-12 max-sm:px-4 py-4 absolute top-[-66px] w-full">
+          <h6 className="text-black sm:text-xl max-sm:text-sm font-semibold">
             Intership for students Provide Valuable, Hands-On Experience
             Opportunities....
           </h6>

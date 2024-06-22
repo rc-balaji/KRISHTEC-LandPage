@@ -67,16 +67,21 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-opacity duration-500 ${
-        scrollFade ? "bg-white bg-opacity-100" : "bg-transparent"
+      className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+        scrollFade ? "bg-[#e0f7fa] bg-opacity-100" : "bg-white bg-opacity-0"
       }`}
     >
       <div className="container mx-auto flex justify-between items-center p-5">
-      <div className="text-2xl font-bold cursor-pointer relative">
-  <Link to="/" className="relative block">
-    <img style={{width:'100px',height:'80px'}} src={logoImage} alt="MyLogo" className="h-16 shadow-green" />
-  </Link>
-</div>
+        <div className="text-2xl font-bold cursor-pointer relative">
+          <Link to="/" className="relative block">
+            <img
+              style={{ width: "80px", height: "60px" }}
+              src={logoImage}
+              alt="MyLogo"
+              className="h-16 shadow-green"
+            />
+          </Link>
+        </div>
 
         <div className="hidden md:flex space-x-6 items-center text-lg">
           {isProductOrServicePage() ? (
@@ -87,7 +92,7 @@ function Navbar() {
               } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
-              Home
+              <p style={{color:!scrollFade?'white':"black"}} >Home</p>
             </Link>
           ) : (
             <ScrollLink
@@ -99,10 +104,10 @@ function Navbar() {
               } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
-              Home
+              <p style={{color:!scrollFade?'white':"black"}} >Home</p>
             </ScrollLink>
           )}
-          
+
           {!isProductOrServicePage() && (
             <>
               <ScrollLink
@@ -114,14 +119,15 @@ function Navbar() {
                 } cursor-pointer`}
                 onClick={() => setCurrentPage("about")}
               >
-                About
+                <p style={{color:!scrollFade?'white':"black"}} >About</p>
               </ScrollLink>
             </>
           )}
-          
+
           <DropdownMenu
             title="Products"
             isRes={navOpen}
+            scrollFade={scrollFade}
             items={[
               { label: "IOT", link: "/products/iot" },
               { label: "EMP Kits", link: "/products/emp-kits" },
@@ -135,6 +141,7 @@ function Navbar() {
           <DropdownMenu
             title="Services"
             isRes={navOpen}
+            scrollFade={scrollFade}
             items={[
               { label: "Internship", link: "/services/internship" },
               { label: "Training", link: "/services/training" },
@@ -149,7 +156,7 @@ function Navbar() {
             } cursor-pointer`}
             onClick={() => setCurrentPage("mou")}
           >
-            MOU
+           <p style={{color:!scrollFade?'white':"black"}} >MOU</p>
           </Link>
           {!isProductOrServicePage() && (
             <>
@@ -162,7 +169,7 @@ function Navbar() {
                 } cursor-pointer`}
                 onClick={() => setCurrentPage("contact")}
               >
-                Contact
+                <p style={{color:!scrollFade?'white':"black"}} >Contact</p>
               </ScrollLink>
             </>
           )}
@@ -174,6 +181,7 @@ function Navbar() {
               className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <svg
+              style={{color:!scrollFade?'white':"black"}}
                 className="w-8 h-8"
                 fill="none"
                 stroke="currentColor"
@@ -256,31 +264,42 @@ function Navbar() {
               </ScrollLink>
             </>
           )}
-          
-          
-          <DropdownMenu
-            title="Products"
-            isRes={navOpen}
-            items={[
-              { label: "IOT", link: "/products/iot" },
-              { label: "EMP Kits", link: "/products/emp-kits" },
-              { label: "ADAS", link: "/products/adas" },
-              { label: "Display", link: "/products/display" },
-              { label: "LED Screen", link: "/products/led-screen" },
-            ]}
-            onClose={() => setNavOpen(false)}
-            currentPage={currentPage}
-          />
-          <DropdownMenu
-            title="Services"
-            isRes={navOpen}
-            items={[
-              { label: "Internship", link: "/services/internship" },
-              { label: "Training", link: "/services/training" },
-            ]}
-            onClose={() => setNavOpen(false)}
-            currentPage={currentPage}
-          />
+
+          <div
+            className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              currentPage == "products" ? "bg-blue-500" : ""
+            }`}
+          >
+            <DropdownMenu
+              title="Products"
+              isRes={navOpen}
+              items={[
+                { label: "IOT", link: "/products/iot" },
+                { label: "EMP Kits", link: "/products/emp-kits" },
+                { label: "ADAS", link: "/products/adas" },
+                { label: "Display", link: "/products/display" },
+                { label: "LED Screen", link: "/products/led-screen" },
+              ]}
+              onClose={() => setNavOpen(false)}
+              currentPage={currentPage}
+            />
+          </div>
+          <div
+            className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              currentPage == "services" ? "bg-blue-500" : ""
+            }`}
+          >
+            <DropdownMenu
+              title="Services"
+              isRes={navOpen}
+              items={[
+                { label: "Internship", link: "/services/internship" },
+                { label: "Training", link: "/services/training" },
+              ]}
+              onClose={() => setNavOpen(false)}
+              currentPage={currentPage}
+            />
+          </div>
           <Link
             to="/mou"
             className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
@@ -293,8 +312,8 @@ function Navbar() {
           >
             MOU
           </Link>
-          
-      {!isProductOrServicePage() && (
+
+          {!isProductOrServicePage() && (
             <>
               <ScrollLink
                 to="contact"
@@ -314,7 +333,6 @@ function Navbar() {
           )}
         </div>
       )}
-
     </nav>
   );
 }

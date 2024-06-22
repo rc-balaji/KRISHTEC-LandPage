@@ -1,8 +1,8 @@
-import React, { useState, useRef, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { NavigationContext } from '../../NavigationContext'; // Import NavigationContext
+import React, { useState, useRef, useContext } from "react";
+import { Link } from "react-router-dom";
+import { NavigationContext } from "../../NavigationContext"; // Import NavigationContext
 
-function DropdownMenu({ title, items, onClose, currentPage,isRes }) {
+function DropdownMenu({ title, items, onClose, currentPage, isRes,scrollFade }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const timerRef = useRef(null);
   const { setCurrentPage } = useContext(NavigationContext); // Use NavigationContext
@@ -26,27 +26,31 @@ function DropdownMenu({ title, items, onClose, currentPage,isRes }) {
 
   return (
     <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      {!isRes ? <button
-        className={`text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-          currentPage === title.toLowerCase() ? '' : 'shadow-text'
-        } cursor-pointer ${
-          currentPage === title.toLowerCase()
-            ? 'text-[#01b0cd] border-b-4 border-[#01b0cd]'
-            : 'hover:text-[#01b0cd]'
-        }`}
-      >
-        {title}
-      </button> : <button
-  className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
-    currentPage === title.toLowerCase() ? "bg-blue-500 text-white" : ""
-  }`}
->
-  {title}
-</button>
-}
+      {!isRes ? (
+        <button
+          className={`text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            currentPage === title.toLowerCase() ? "" : "shadow-text"
+          } cursor-pointer ${
+            currentPage === title.toLowerCase()
+              ? "text-[#01b0cd] border-b-4 border-[#01b0cd]"
+              : "hover:text-[#01b0cd]"
+          }`}
+        >
+          <p style={{color:!scrollFade?'white':"black"}}  >{title}</p>
+        </button>
+      ) : (
+        <button
+          className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+            currentPage === title.toLowerCase() ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={handleMouseEnter}
+        >
+          {title}
+        </button>
+      )}
       <div
         className={`absolute bg-white shadow-lg rounded mt-2 w-48 z-50 transition-transform transform ${
-          dropdownOpen ? 'scale-100' : 'scale-0'
+          dropdownOpen ? "scale-100" : "scale-0"
         }`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -56,9 +60,9 @@ function DropdownMenu({ title, items, onClose, currentPage,isRes }) {
             key={index}
             to={item.link}
             className={`block px-4 py-2 hover:bg-[#01b0cd] hover:text-white shadow-text ${
-              currentPage === item.label.toLowerCase() ? 'bg-blue-500 text-white' : ''
+              currentPage === item.label.toLowerCase() ? "bg-blue-500 text-white" : ""
             }`}
-            onClick={() => handleLinkClick(item.label)} // Pass item.label to handleLinkClick
+            onClick={() => handleLinkClick(item)} // Pass item.label to handleLinkClick
           >
             {item.label}
           </Link>

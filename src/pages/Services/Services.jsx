@@ -20,7 +20,7 @@ function Services() {
     // Loop through child elements
     for (var j = 0; j < children.length; j++) {
       // Set the background color to rgba(98, 0, 234, 0.952)
-      children[j].style.backgroundColor = "rgba(196, 26, 154, 0.952)";
+      children[j].style.backgroundColor = "rgba(250, 147, 188)";
     }
   }
 
@@ -73,6 +73,7 @@ function Services() {
     <section
       id="services"
       className="mt-0 min-h-screen flex items-center justify-center bg-cover bg-center bg-gray-100 py-8"
+      style={{ backgroundColor: '#e0f7fa' }}
     >
       <div className="container mx-auto px-4 text-center">
         <h2

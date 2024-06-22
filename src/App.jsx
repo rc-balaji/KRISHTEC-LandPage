@@ -34,7 +34,7 @@ function App() {
             <Route path="/services/:serviceId" element={<ServiceDetails />} />
           </Routes>
           <Footer />
-          <ChatBot /> {/* Add the ChatBot component */}
+          <ChatBot /> 
         </div>
       </NavigationProvider>
     </Router>
