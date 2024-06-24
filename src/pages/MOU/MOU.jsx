@@ -61,7 +61,7 @@ const MOU = () => {
   ];
 
   return (
-    <section id="mou" className="min-h-screen bg-gray-100">
+    <section id="mou" className="mt-20  min-h-screen bg-gray-100">
       <div className="container mx-auto py-12">
         <h2 className="text-4xl text-center mt-24 font-bold mb-8 text-gray-800" data-aos="fade-up">Memorandum of Understanding</h2>
         

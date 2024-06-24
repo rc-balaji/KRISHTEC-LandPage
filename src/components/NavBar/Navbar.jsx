@@ -267,12 +267,12 @@ function Navbar() {
             </>
           )}
 
-          <div
+          {/* <div
             className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
               currentPage == "products" ? "bg-blue-500" : ""
             }`}
           >
-            {/* <DropdownMenu
+            <DropdownMenu
               title="Products"
               isRes={navOpen}
               items={[
@@ -284,8 +284,8 @@ function Navbar() {
               ]}
               onClose={() => setNavOpen(false)}
               currentPage={currentPage}
-            /> */}
-          </div>
+            />
+          </div> */}
           <div
             className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
               currentPage == "services" ? "bg-blue-500" : ""
