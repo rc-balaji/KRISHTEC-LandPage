@@ -67,7 +67,8 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+      style={{width:'100%'}}
+      className={`fixed top-0 z-50 transition-all duration-500 ${
         scrollFade ? "bg-[#e0f7fa] bg-opacity-100" : "bg-white bg-opacity-0"
       }`}
     >
@@ -92,7 +93,7 @@ function Navbar() {
               } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
-              <p style={{color:!scrollFade?'white':"black"}} >Home</p>
+              <p style={{color:!scrollFade && currentPage === "home" ?'white':"black"}} >Home</p>
             </Link>
           ) : (
             <ScrollLink
@@ -104,7 +105,7 @@ function Navbar() {
               } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
-              <p style={{color:!scrollFade?'white':"black"}} >Home</p>
+              <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >Home</p>
             </ScrollLink>
           )}
 
@@ -119,12 +120,12 @@ function Navbar() {
                 } cursor-pointer`}
                 onClick={() => setCurrentPage("about")}
               >
-                <p style={{color:!scrollFade?'white':"black"}} >About</p>
+                <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >About</p>
               </ScrollLink>
             </>
           )}
 
-          <DropdownMenu
+          {/* <DropdownMenu
             title="Products"
             isRes={navOpen}
             scrollFade={scrollFade}
@@ -137,7 +138,7 @@ function Navbar() {
             ]}
             onClose={() => setNavOpen(false)}
             currentPage={currentPage}
-          />
+          /> */}
           <DropdownMenu
             title="Services"
             isRes={navOpen}
@@ -156,7 +157,7 @@ function Navbar() {
             } cursor-pointer`}
             onClick={() => setCurrentPage("mou")}
           >
-           <p style={{color:!scrollFade?'white':"black"}} >MOU</p>
+           <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >MOU</p>
           </Link>
           {!isProductOrServicePage() && (
             <>
@@ -169,7 +170,7 @@ function Navbar() {
                 } cursor-pointer`}
                 onClick={() => setCurrentPage("contact")}
               >
-                <p style={{color:!scrollFade?'white':"black"}} >Contact</p>
+                <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >Contact</p>
               </ScrollLink>
             </>
           )}
@@ -181,7 +182,7 @@ function Navbar() {
               className="focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <svg
-              style={{color:!scrollFade?'white':"black"}}
+              style={{color:!scrollFade && currentPage === "home"?'white':"black"}}
                 className="w-8 h-8"
                 fill="none"
                 stroke="currentColor"
@@ -213,6 +214,7 @@ function Navbar() {
               </div>
             </div>
           </div>
+          
         </div>
       </div>
       {navOpen && (
@@ -270,7 +272,7 @@ function Navbar() {
               currentPage == "products" ? "bg-blue-500" : ""
             }`}
           >
-            <DropdownMenu
+            {/* <DropdownMenu
               title="Products"
               isRes={navOpen}
               items={[
@@ -282,7 +284,7 @@ function Navbar() {
               ]}
               onClose={() => setNavOpen(false)}
               currentPage={currentPage}
-            />
+            /> */}
           </div>
           <div
             className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${

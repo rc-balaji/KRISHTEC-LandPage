@@ -36,7 +36,7 @@ function DropdownMenu({ title, items, onClose, currentPage, isRes,scrollFade }) 
               : "hover:text-[#01b0cd]"
           }`}
         >
-          <p style={{color:!scrollFade?'white':"black"}}  >{title}</p>
+          <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}}  >{title}</p>
         </button>
       ) : (
         <button

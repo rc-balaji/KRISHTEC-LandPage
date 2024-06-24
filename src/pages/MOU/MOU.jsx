@@ -17,6 +17,11 @@ const MOU = () => {
     });
   }, []);
 
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+  }, []); 
+
   const partnershipData = [
     {
       name: "KIT- Kalaignarkarunanidhi Institute of Technology, Coimbatore.",
@@ -65,7 +70,7 @@ const MOU = () => {
             <img src={img} alt="Partnership Image" className="mx-auto rounded-lg shadow-lg md:max-h-full" />
           </div>
 
-          <div className="overflow-y-auto h-[800px]">
+          <div className="overflow-y-auto h-[800px]" data-aos="fade-left" >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {partnershipData.map((partner, index) => (
                 <a key={index} href={partner.url} target="_blank" rel="noopener noreferrer" className="block">

@@ -15,6 +15,7 @@ import Footer from './components/Footer/Footer.jsx';
 import MOU from './pages/MOU/MOU.jsx';
 import ChatBot from './components/ChatBot.jsx'; // Import the ChatBot component
 
+
 function App() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
