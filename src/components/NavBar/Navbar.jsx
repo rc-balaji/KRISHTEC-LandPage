@@ -77,7 +77,7 @@ function Navbar() {
         <div className="text-2xl font-bold cursor-pointer relative">
           <Link to="/" className="relative block">
             <img
-              style={{ width: "80px", height: "60px" }}
+              style={{ width: "60px", height: "45px" }}
               src={logoImage}
               alt="MyLogo"
               className="h-16 shadow-green"
@@ -86,7 +86,7 @@ function Navbar() {
         </div>
 
         {/* Right-aligned menu items */}
-        <div className="hidden md:flex space-x-6 items-center ml-5 text-lg mr-auto"> {/* ml-auto to align to the right */}
+        <div className="hidden md:flex space-x-6 items-center ml-12 text-lg mr-auto"> {/* ml-auto to align to the right */}
           {isProductOrServicePage() ? (
             <Link
               to="/"

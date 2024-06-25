@@ -32,7 +32,7 @@
   bottom: -10px;
   height: 3px;
   width: 0;
-  background-color: yellow;
+  background-color: rgb(255, 255, 255);
   animation: underline 2s forwards;
   transform: translateX(-50%);
 }
