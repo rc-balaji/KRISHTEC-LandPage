@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import LiquidSwipe from 'react-liquidswipe';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import img1 from './img1.jpg';
+import img1 from './img1.png';
 import img2 from './img2.jpg';
 import './Slide.css'; // Import the custom CSS file
 import Slide from './Slide.jsx'; // Import the Slide component
