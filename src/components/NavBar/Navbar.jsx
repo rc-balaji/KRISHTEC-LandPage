@@ -67,12 +67,13 @@ function Navbar() {
 
   return (
     <nav
-      style={{width:'100%'}}
+      style={{ width: "100%" }}
       className={`fixed top-0 z-50 transition-all duration-500 ${
-        scrollFade ? "bg-[#e0f7fa] bg-opacity-100" : "bg-white bg-opacity-0"
+        // scrollFade ? "bg-[#0D1B28] bg-opacity-100" : "bg-white bg-opacity-0"
+        scrollFade ? "bg-[#0D1B28] bg-opacity-100" : "bg-[#0D1B28] bg-opacity-100"
       }`}
     >
-      <div className="container mx-auto flex justify-between items-center p-5">
+      <div className="container mx-auto flex items-center justify-between p-5">
         <div className="text-2xl font-bold cursor-pointer relative">
           <Link to="/" className="relative block">
             <img
@@ -84,7 +85,8 @@ function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden md:flex space-x-6 items-center text-lg">
+        {/* Right-aligned menu items */}
+        <div className="hidden md:flex space-x-6 items-center ml-5 text-lg mr-auto"> {/* ml-auto to align to the right */}
           {isProductOrServicePage() ? (
             <Link
               to="/"
@@ -93,7 +95,7 @@ function Navbar() {
               } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
-              <p style={{color:!scrollFade && currentPage === "home" ?'white':"black"}} >Home</p>
+              <p style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}>Home</p>
             </Link>
           ) : (
             <ScrollLink
@@ -105,7 +107,7 @@ function Navbar() {
               } cursor-pointer`}
               onClick={() => setCurrentPage("home")}
             >
-              <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >Home</p>
+              <p style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}>Home</p>
             </ScrollLink>
           )}
 
@@ -120,11 +122,12 @@ function Navbar() {
                 } cursor-pointer`}
                 onClick={() => setCurrentPage("about")}
               >
-                <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >About</p>
+                <p style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}>About</p>
               </ScrollLink>
             </>
           )}
 
+          {/* DropdownMenu for Products (temporarily hidden) */}
           {/* <DropdownMenu
             title="Products"
             isRes={navOpen}
@@ -139,7 +142,9 @@ function Navbar() {
             onClose={() => setNavOpen(false)}
             currentPage={currentPage}
           /> */}
-          <DropdownMenu
+          
+          {/* DropdownMenu for Services (temporarily hidden) */}
+          {/* <DropdownMenu
             title="Services"
             isRes={navOpen}
             scrollFade={scrollFade}
@@ -149,7 +154,17 @@ function Navbar() {
             ]}
             onClose={() => setNavOpen(false)}
             currentPage={currentPage}
-          />
+          /> */}
+
+          <Link
+            to="/services/internship"
+            className={`text-2xl nav-link ${
+              currentPage === "services" ? "nav-link-active" : ""
+            } cursor-pointer`}
+            onClick={() => setCurrentPage("services")}
+          >
+            <p style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}>Services</p>
+          </Link>
           <Link
             to="/mou"
             className={`text-2xl nav-link ${
@@ -157,8 +172,9 @@ function Navbar() {
             } cursor-pointer`}
             onClick={() => setCurrentPage("mou")}
           >
-           <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >MOU</p>
+            <p style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}>MOU</p>
           </Link>
+
           {!isProductOrServicePage() && (
             <>
               <ScrollLink
@@ -170,38 +186,38 @@ function Navbar() {
                 } cursor-pointer`}
                 onClick={() => setCurrentPage("contact")}
               >
-                <p style={{color:!scrollFade && currentPage === "home"?'white':"black"}} >Contact</p>
+                <p style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}>Contact</p>
               </ScrollLink>
             </>
           )}
         </div>
-        <div className="flex items-center">
-          <div className="md:hidden">
-            <button
-              onClick={() => setNavOpen(!navOpen)}
-              className="focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+        {/* Mobile Menu Icon */}
+        <div className="flex items-center  md:hidden">
+          <button
+            onClick={() => setNavOpen(!navOpen)}
+            className="focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <svg
+              style={{ color: !scrollFade && currentPage === "home" ? 'white' : "white" }}
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-              style={{color:!scrollFade && currentPage === "home"?'white':"black"}}
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
-            </button>
-          </div>
-          
-          
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
       {navOpen && (
         <div className="md:hidden bg-white shadow-lg rounded-lg mt-2 w-full">
           {isProductOrServicePage() ? (
@@ -233,6 +249,7 @@ function Navbar() {
               Home
             </ScrollLink>
           )}
+
           {!isProductOrServicePage() && (
             <>
               <ScrollLink
@@ -252,6 +269,7 @@ function Navbar() {
             </>
           )}
 
+          {/* DropdownMenu for Products in Mobile (temporarily hidden) */}
           {/* <div
             className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
               currentPage == "products" ? "bg-blue-500" : ""
@@ -271,7 +289,9 @@ function Navbar() {
               currentPage={currentPage}
             />
           </div> */}
-          <div
+
+          {/* DropdownMenu for Services in Mobile (temporarily hidden) */}
+          {/* <div
             className={`block py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
               currentPage == "services" ? "bg-blue-500" : ""
             }`}
@@ -286,7 +306,20 @@ function Navbar() {
               onClose={() => setNavOpen(false)}
               currentPage={currentPage}
             />
-          </div>
+          </div> */}
+
+          <Link
+            to="/services/internship"
+            className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${
+              isActive("/services") ? "bg-blue-500 text-white" : ""
+            }`}
+            onClick={() => {
+              setCurrentPage("services");
+              setNavOpen(false);
+            }}
+          >
+            Services
+          </Link>
           <Link
             to="/mou"
             className={`block px-4 py-2 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-text cursor-pointer ${

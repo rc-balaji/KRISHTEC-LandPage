@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
  // Import useHistory from react-router-dom
 import "aos/dist/aos.css";
 import AOS from "aos";
@@ -9,6 +9,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import "./style.css";
 import M2M from './assets/M2M.png';
 import { useParams } from "react-router-dom";
+import { NavigationContext } from "../../NavigationContext";
 
 // Initialize Swiper modules
 SwiperCore.use([EffectCoverflow, Pagination]);
@@ -166,9 +167,14 @@ function ServicesTraining() {
 
 const Services = () => {
 
+
+  const { setCurrentPage } = useContext(NavigationContext);
+
   useEffect(() => {
+
     // Scroll to the top of the page when the component mounts
     window.scrollTo(0, 0);
+    setCurrentPage("services")
   }, []); 
   const {serviceId} = useParams(); 
 

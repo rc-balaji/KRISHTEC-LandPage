@@ -1,58 +1,55 @@
-/* Float animation for the image */
 @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
+  50% {
+    transform: translateY(-20px);
   }
-  
-  /* Underline animation for the heading */
-  @keyframes underline {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-    }
-  }
-  
-  .heading-underline {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .heading-underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    height: 3px;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes underline {
+  from {
     width: 0;
-    background-color: yellow;
-    animation: underline 2s forwards;
   }
-  
-  /* Glowing button effect */
-  .glowing-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #000000;
-    background: linear-gradient(90deg, #00F680 0%,#ADFF28  100%);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out;
+  to {
+    width: 100%;
   }
-  
-  .glowing-button:hover {
-    box-shadow: 0 0 30px #02f022;
-    transform: scale(1.1);
-  }
-  
+}
+
+.heading-underline {
+  display: inline-block;
+  position: relative;
+}
+
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  height: 3px;
+  width: 0;
+  background-color: yellow;
+  animation: underline 2s forwards;
+  transform: translateX(-50%);
+}
+
+.glowing-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #000000;
+  background: linear-gradient(90deg, #00F680 0%, #ADFF28 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.glowing-button:hover {
+  box-shadow: 0 0 30px #02f022;
+  transform: scale(1.1);
+}

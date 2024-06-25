@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import whatsappImage from './whatsapp.png'; // Adjust the path as necessary
+import whatsappImage1 from './what.png'; // Adjust the path as necessary
+import messImage1 from './mess.png'; // Adjust the path as necessary
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +13,9 @@ const ChatBot = () => {
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-center">
       <button
         onClick={toggleChat}
-        className={`rounded-full ${!isOpen && "bg-blue-500"} text-white p-3 shadow-lg focus:outline-none mb-2`}
+        className={`rounded-full bg-black text-white p-3 shadow-lg focus:outline-none mb-2 flex items-center justify-center w-12 h-12`}
       >
-        {isOpen ? '❌' : '💬'}
+        {isOpen ? '❌' : <img src={messImage1} alt="ChatBot" className="w-6 h-6" />}
       </button>
       <div
         className={`transition-all duration-500 ease-in-out overflow-hidden bg-white border border-gray-300 rounded-lg shadow-lg ${
@@ -35,9 +36,9 @@ const ChatBot = () => {
         href="https://api.whatsapp.com/send?phone=7825933039"
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full p-3 shadow-lg focus:outline-none mt-2"
+        className="rounded-full bg-black p-3 shadow-lg focus:outline-none mt-2 flex items-center justify-center w-12 h-12"
       >
-        <img src={whatsappImage} alt="WhatsApp" className="w-8 h-8" />
+        <img src={whatsappImage1} alt="WhatsApp" className="w-6 h-6" />
       </a>
     </div>
   );
