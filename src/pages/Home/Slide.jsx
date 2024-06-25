@@ -6,7 +6,7 @@ const Slide = ({ imageUrl, heading, description, buttonText, buttonLink, showBla
     className="w-full h-full  bg-cover bg-center flex items-center"
     style={{ backgroundImage: `url(${imageUrl})` }}
   >
-    <div className={`w-full mt-12 ml-4s h-full ${showBlackOverlay ? 'bg-black bg-opacity-50' : ''} flex flex-col items-start justify-center p-8`}>
+    <div className={`w-full mt-12 ml-4 h-full ${showBlackOverlay ? 'bg-black bg-opacity-50' : ''} flex flex-col items-start justify-center p-8`}>
       <div className="text-left max-w-2xl">
         <h1
           className="text-4xl md:text-5xl font-bold text-white mb-4 relative heading-underline"
