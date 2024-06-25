@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import DropdownMenu from "./DropdownMenu";
 import logoImage from "./ic3.png";
-import isoImage from "./iso.png";
+
 import { NavigationContext } from "../../NavigationContext";
 import "./animations.css"; // Import custom CSS animations
 
@@ -198,22 +198,7 @@ function Navbar() {
               </svg>
             </button>
           </div>
-          <div className="flex items-center flex-col">
-            <img
-              src={isoImage}
-              alt="Profile"
-              className={`w-30 h-16 rounded-full ml-4 transition-opacity duration-500`}
-            />
-            <div className="flex flex-col ml-2">
-              <div
-                className={`text-red-500 ${
-                  scrollFade ? "opacity-75" : "opacity-100"
-                } transition-opacity duration-500 text-base sm:text-lg md:text-l lg:text-xl xl:text-2xl`}
-              >
-                ISO 9001: 2015
-              </div>
-            </div>
-          </div>
+          
           
         </div>
       </div>

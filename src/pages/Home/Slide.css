@@ -43,8 +43,8 @@
     display: inline-block;
     padding: 10px 20px;
     font-size: 1rem;
-    color: #fff;
-    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 153, 0, 1) 100%);
+    color: #000000;
+    background: linear-gradient(90deg, #00F680 0%,#ADFF28  100%);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -52,7 +52,7 @@
   }
   
   .glowing-button:hover {
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 30px #02f022;
     transform: scale(1.1);
   }
   

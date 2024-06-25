@@ -1,5 +1,5 @@
 import React from "react";
-
+import isoImage from "./iso.png";
 const Footer = () => {
   return (
     <footer className="bg-gray-800 py-8 px-8 font-[sans-serif] tracking-wide mt-16">
@@ -78,7 +78,7 @@ const Footer = () => {
               <li className="text-gray-400 text-base">www.KrishTec.co.in</li>
             </ul>
           </div>
-
+          <div  className="flex items-center flex-col" >
           <div>
             <h4 className="mt-5 text-xl font-semibold mb-6 text-white">
               Follow Us
@@ -170,6 +170,22 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+          </div>
+          <div className=" mt-12 flex items-center flex-col">
+            <img
+              src={isoImage}
+              alt="Profile"
+              className={`w-30 h-16 rounded-full ml-4 transition-opacity duration-500`}
+            />
+            <div className="flex flex-col ml-2">
+              <div
+                className={`text-red-500 transition-opacity duration-500 text-base sm:text-lg md:text-l lg:text-xl xl:text-2xl`}
+              >
+                ISO 9001: 2015
+              </div>
+            </div>
+          </div>
+          
           </div>
         </div>
       </div>
