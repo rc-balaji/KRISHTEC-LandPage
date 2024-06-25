@@ -75,7 +75,7 @@ function ServicesInternShip() {
   }, []);
 
   return (
-    <section id="contact" className="h-screen flex flex-col items-center justify-center bg-cover bg-center" data-aos="fade-up">
+    <section id="contact" className="mt-20 h-screen flex flex-col items-center justify-center bg-cover bg-center" data-aos="fade-up">
       <h2 className="text-3xl mb-4">Service Details</h2>
       <Swiper
         effect={'coverflow'}
