@@ -6,7 +6,7 @@ const Slide = ({ imageUrl, heading, description, buttonText, buttonLink, showBla
     className="w-full h-full  bg-cover bg-center flex items-center"
     style={{ backgroundImage: `url(${imageUrl})` }}
   >
-    <div className={`w-full mt-12 ml-4 h-full ${showBlackOverlay ? 'bg-black bg-opacity-50' : ''} flex flex-col items-start justify-center p-8`}>
+    <div className={`w-full mt-0 ml-4 h-full ${showBlackOverlay ? 'bg-black bg-opacity-50' : ''} flex flex-col items-start justify-center p-8`}>
       <div className="text-left max-w-2xl">
         <h1
           className="text-4xl md:text-5xl font-bold text-white mb-4 relative heading-underline"
@@ -16,7 +16,7 @@ const Slide = ({ imageUrl, heading, description, buttonText, buttonLink, showBla
           {heading}
         </h1>
         <p
-          className="text-white mb-4 pb-2"
+          className="text-white mb-4 pb-2 w-[350px]"
           data-aos="fade-left"
           data-aos-delay={1000}
         >
@@ -24,7 +24,7 @@ const Slide = ({ imageUrl, heading, description, buttonText, buttonLink, showBla
         </p>
         <a
           href={buttonLink}
-          className="glowing-button text-sm px-5 py-2.5 mb-2"
+          className="glowing-button text-sm  mt-24"
           data-aos="fade-up"
           data-aos-delay={1300}
         >
