@@ -16,7 +16,7 @@ const Slide = ({ imageUrl, heading, description, buttonText, buttonLink, showBla
           {heading}
         </h1>
         <p
-          className="text-white mb-4 pb-2 w-[350px]"
+          className="mt-5 text-white mb-4 pb-2 w-[350px]"
           data-aos="fade-left"
           data-aos-delay={1000}
         >

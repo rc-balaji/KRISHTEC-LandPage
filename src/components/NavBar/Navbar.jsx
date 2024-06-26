@@ -73,7 +73,7 @@ function Navbar() {
         scrollFade ? "bg-[#0D1B28] bg-opacity-100" : "bg-[#0D1B28] bg-opacity-100"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between py-5 ">
+      <div className="container mx-auto flex items-center justify-between py-5 pl-3 ">
         <div className="text-2xl font-bold cursor-pointer relative">
           <Link to="/" className="relative block">
             <img
