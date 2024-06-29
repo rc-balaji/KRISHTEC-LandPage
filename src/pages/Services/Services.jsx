@@ -1,28 +1,16 @@
 import React from "react";
-import img1 from "./assets/1img.jpg";
-import img2 from "./assets/2img.jpg";
-import img3 from "./assets/3img.jpg";
-import img4 from "./assets/4img.jpg";
-import img5 from "./assets/5img.jpg";
-import img6 from "./assets/6img.jpg";
-import img7 from "./assets/7img.jpg";
+import img1 from "./assets/1img.png";
+import img2 from "./assets/2img.png";
+import img3 from "./assets/3img.png";
+import img4 from "./assets/4img.png";
+import img5 from "./assets/5img.png";
+import img6 from "./assets/6img.png";
+import img7 from "./assets/7img.png";
 import Atropos from "atropos/react";
 import "./style.css";
 
 function Services() {
-  var elements = document.getElementsByClassName("my-atropos");
-
-  // Loop through each element
-  for (var i = 0; i < elements.length; i++) {
-    // Find child elements with class 'atropos-shadow' within each 'my-atropos' element
-    var children = elements[i].getElementsByClassName("atropos-shadow");
-
-    // Loop through child elements
-    for (var j = 0; j < children.length; j++) {
-      // Set the background color to rgba(98, 0, 234, 0.952)
-      children[j].style.backgroundColor = "rgba(250, 147, 188)";
-    }
-  }
+  
 
   const services = [
     {
@@ -90,7 +78,7 @@ function Services() {
               className="my-atropos"
               activeOffset={40}
               shadow={true}
-              shadowScale={1.05}
+              shadowScale={1.3}
               highlight={true}
               onEnter={() => console.log("Enter")}
               onLeave={() => console.log("Leave")}
