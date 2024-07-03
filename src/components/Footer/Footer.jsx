@@ -15,7 +15,7 @@ const Footer = () => {
                 "https://docs.google.com/forms/d/e/1FAIpQLSepHZtuzmGbU6nIEb9pq8xUS3-RZdOi_76L5le_XHISeRYn7A/viewform";
             }}
             type="button"
-            className="sm:px-4 max-sm:px-2 py-2 sm:text-sm max-sm:text-xs rounded-full text-blue-600 gap-2 bg-white ml-auto"
+            className="sm:px-4 max-sm:px-2 py-2 sm:text-sm max-sm:text-xs rounded-full text-white gap-2 bg-[#0D1B28] ml-auto"
           >
             Get Started
           </button>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import img1 from "./assets/1img.png";
 import img2 from "./assets/2img.png";
 import img3 from "./assets/3img.png";
@@ -10,7 +10,7 @@ import Atropos from "atropos/react";
 import "./style.css";
 
 function Services() {
-  
+  const [hoverIndex, setHoverIndex] = useState(null);
 
   const services = [
     {
@@ -71,47 +71,42 @@ function Services() {
           Our Services
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
-            return <div key={index} >
-                <Atropos
-              key={service.id} // Assuming service.id or another unique identifier is available
+          {services.map((service, index) => (
+            <Atropos
+              key={index}
               className="my-atropos"
               activeOffset={40}
               shadow={true}
               shadowScale={1.3}
               highlight={true}
-              onEnter={() => console.log("Enter")}
-              onLeave={() => console.log("Leave")}
+              onEnter={() => setHoverIndex(index)}
+              onLeave={() => setHoverIndex(null)}
               onRotate={(x, y) => console.log("Rotate", x, y)}
             >
               <div
-                className="bg-white p-6 rounded-lg shadow-lg relative"
+                style={{ border: '2px solid black' }}
+                className={`relative p-6 shadow-md hover:bg-[#0D1B28] hover:shadow-lg hover:border-black hover:shadow-black`}
                 data-aos="fade-up"
                 data-aos-delay={index * 200}
-                style={{ "--shadow-color": service.shadowColor }} // Correct inline style syntax
               >
-                <div className="group">
-                  <div className="flex justify-center mb-4">
+                <div className="group relative h-full w-full">
+                  <div className="flex justify-center mb-4 h-full">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="h-20 w-20 md:h-24 md:w-24 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="h-20 w-20 md:h-24 md:w-24 object-cover transition-opacity duration-300 group-hover:opacity-0"
                     />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="absolute inset-0 z-10 text-2xl flex items-center justify-center transition-opacity duration-300 opacity-0 bg-gradient-to-r from-green-400 to-blue-500 pointer-events-none group-hover:opacity-100">
-                    {service.desc}
-                  </p>
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-lg"></div>
+                  {hoverIndex === index && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white opacity-100 transition-opacity duration-300 rounded-lg">
+                      <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
+                      <p className="text-lg">{service.desc}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </Atropos>
-            </div>
-            
-            
-          })}
+          ))}
         </div>
       </div>
     </section>

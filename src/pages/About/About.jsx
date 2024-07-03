@@ -23,7 +23,7 @@ function About() {
   return (
     <section id="about"  className="min-h-screen flex items-center justify-center from-white py-8">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-8" data-aos="fade-up" data-aos-delay='100'>About Us</h1>
+        {/* <h1 className="text-4xl md:text-5xl font-bold text-center text-gray-800 mb-8" data-aos="fade-up" data-aos-delay='100'>About Us</h1> */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           <div className="md:w-1/2 px-4 md:px-0" data-aos="zoom-in" data-aos-delay='300'>
             <a href={video} target="_blank" rel="noopener noreferrer">
@@ -35,6 +35,7 @@ function About() {
           </div>
           <div className="md:w-1/2 px-4 md:px-0" data-aos="fade-left" data-aos-delay='600'>
             <div className="text-left">
+              <h1 className="text-4xl md:text-5xl font-bold text-left text-gray-800 mb-8" data-aos="fade-right" data-aos-delay='800'>About Us</h1>
               <h3 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4" data-aos="fade-right" data-aos-delay='800'>We will provide you the best work which you dreamt for!</h3>
               <ul className="list-none text-gray-600 leading-relaxed mb-4">
                 {aboutPoints.map((point, index) => (

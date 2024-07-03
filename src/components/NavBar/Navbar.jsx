@@ -193,7 +193,7 @@ function Navbar() {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="flex items-center  md:hidden">
+        <div className="flex items-center  md:hidden mr-4">
           <button
             onClick={() => setNavOpen(!navOpen)}
             className="focus:outline-none focus:ring-2 focus:ring-blue-500"
